@@ -28,6 +28,9 @@ const App = () => {
     })
   }
 
+  const positiveFeedback = Math.round((typeData.good / (totalFeedback - typeData.neutral) * 100));
+
+
   return (
     <div>
       <Description />
@@ -36,7 +39,12 @@ const App = () => {
         onReset={handleReset}
         total={totalFeedback}/>
         
-      {totalFeedback > 0 ? <Feedback feedback={typeData} total={totalFeedback}/> : <Notification />}
+      {totalFeedback > 0 ? 
+        <Feedback 
+          feedback={typeData}
+          total={totalFeedback} 
+          positiveFeedback={positiveFeedback}/> : 
+      <Notification />}
     </div>
   )
 }
